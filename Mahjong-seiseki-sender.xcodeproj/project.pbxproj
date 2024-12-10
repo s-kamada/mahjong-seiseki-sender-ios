@@ -14,6 +14,8 @@
 		0A24248B2D0600FB000BB949 /* Mahjong_seiseki_senderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24248A2D0600FB000BB949 /* Mahjong_seiseki_senderTests.swift */; };
 		0A2424952D0600FB000BB949 /* Mahjong_seiseki_senderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2424942D0600FB000BB949 /* Mahjong_seiseki_senderUITests.swift */; };
 		0A2424972D0600FB000BB949 /* Mahjong_seiseki_senderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2424962D0600FB000BB949 /* Mahjong_seiseki_senderUITestsLaunchTests.swift */; };
+		0A3F5C312D07FB6100CD26C0 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3F5C302D07FB6100CD26C0 /* Rank.swift */; };
+		0A3F5C332D07FB6700CD26C0 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3F5C322D07FB6700CD26C0 /* Rule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		0A2424902D0600FB000BB949 /* Mahjong-seiseki-senderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mahjong-seiseki-senderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A2424942D0600FB000BB949 /* Mahjong_seiseki_senderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mahjong_seiseki_senderUITests.swift; sourceTree = "<group>"; };
 		0A2424962D0600FB000BB949 /* Mahjong_seiseki_senderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mahjong_seiseki_senderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0A3F5C302D07FB6100CD26C0 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		0A3F5C322D07FB6700CD26C0 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 			children = (
 				0A2424792D0600F9000BB949 /* Mahjong_seiseki_senderApp.swift */,
 				0A24247B2D0600F9000BB949 /* ContentView.swift */,
+				0A3F5C322D07FB6700CD26C0 /* Rule.swift */,
+				0A3F5C302D07FB6100CD26C0 /* Rank.swift */,
 				0A24247D2D0600FB000BB949 /* Assets.xcassets */,
 				0A24247F2D0600FB000BB949 /* Preview Content */,
 			);
@@ -257,6 +263,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A3F5C312D07FB6100CD26C0 /* Rank.swift in Sources */,
+				0A3F5C332D07FB6700CD26C0 /* Rule.swift in Sources */,
 				0A24247C2D0600F9000BB949 /* ContentView.swift in Sources */,
 				0A24247A2D0600F9000BB949 /* Mahjong_seiseki_senderApp.swift in Sources */,
 			);

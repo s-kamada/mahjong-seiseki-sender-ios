@@ -12,6 +12,7 @@ import SwiftUI
 struct ContentView: View {
     // TODO: stateをフォームの数だけ作る
     @State var description = ""
+    @State var rank = Rank.first
 
     var body: some View {
         VStack {
@@ -32,12 +33,16 @@ struct ContentView: View {
                 TextField("12300", text: $description).frame(maxWidth: .infinity, alignment: .trailing).multilineTextAlignment(.trailing)
             }
 
-            // TODO: SegmentControlにする
-            // https://zenn.dev/slowhand/articles/17d7c40d8c5663
+            // TODO: スペース管理、幅をもう少し小さくしたい
             HStack {
                 Text("rank")
                 Text("*").foregroundColor(.red)
-                TextField("1", text: $description).frame(maxWidth: .infinity, alignment: .trailing).multilineTextAlignment(.trailing)
+                Spacer()
+                Picker("順位", selection: $rank) {
+                    ForEach(Rank.allCases) {
+                        Text("\($0.rawValue)").tag($0)
+                    }
+                }.pickerStyle(.segmented)
             }
 
             // TODO: プルダウン or ドラムにする
