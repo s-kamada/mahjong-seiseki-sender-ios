@@ -16,6 +16,10 @@
 		0A2424972D0600FB000BB949 /* Mahjong_seiseki_senderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2424962D0600FB000BB949 /* Mahjong_seiseki_senderUITestsLaunchTests.swift */; };
 		0A3F5C312D07FB6100CD26C0 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3F5C302D07FB6100CD26C0 /* Rank.swift */; };
 		0A3F5C332D07FB6700CD26C0 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3F5C322D07FB6700CD26C0 /* Rule.swift */; };
+		0A3F5C352D093E6300CD26C0 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3F5C342D093E6300CD26C0 /* ApiClient.swift */; };
+		0A3F5C382D09CDF500CD26C0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A3F5C372D09CDF500CD26C0 /* Alamofire */; };
+		0A3F5C3B2D09CEB000CD26C0 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 0A3F5C3A2D09CEB000CD26C0 /* SwiftyJSON */; };
+		0A3F5C3D2D09D01A00CD26C0 /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3F5C3C2D09D01A00CD26C0 /* GameResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,8 @@
 		0A2424962D0600FB000BB949 /* Mahjong_seiseki_senderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mahjong_seiseki_senderUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0A3F5C302D07FB6100CD26C0 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		0A3F5C322D07FB6700CD26C0 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		0A3F5C342D093E6300CD26C0 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		0A3F5C3C2D09D01A00CD26C0 /* GameResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A3F5C3B2D09CEB000CD26C0 /* SwiftyJSON in Frameworks */,
+				0A3F5C382D09CDF500CD26C0 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +112,8 @@
 				0A3F5C302D07FB6100CD26C0 /* Rank.swift */,
 				0A24247D2D0600FB000BB949 /* Assets.xcassets */,
 				0A24247F2D0600FB000BB949 /* Preview Content */,
+				0A3F5C342D093E6300CD26C0 /* ApiClient.swift */,
+				0A3F5C3C2D09D01A00CD26C0 /* GameResult.swift */,
 			);
 			path = "Mahjong-seiseki-sender";
 			sourceTree = "<group>";
@@ -149,6 +159,10 @@
 			dependencies = (
 			);
 			name = "Mahjong-seiseki-sender";
+			packageProductDependencies = (
+				0A3F5C372D09CDF500CD26C0 /* Alamofire */,
+				0A3F5C3A2D09CEB000CD26C0 /* SwiftyJSON */,
+			);
 			productName = "Mahjong-seiseki-sender";
 			productReference = 0A2424762D0600F9000BB949 /* Mahjong-seiseki-sender.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +235,10 @@
 				Base,
 			);
 			mainGroup = 0A24246D2D0600F9000BB949;
+			packageReferences = (
+				0A3F5C362D09CDF400CD26C0 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0A3F5C392D09CEB000CD26C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 0A2424772D0600F9000BB949 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -264,6 +282,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A3F5C312D07FB6100CD26C0 /* Rank.swift in Sources */,
+				0A3F5C352D093E6300CD26C0 /* ApiClient.swift in Sources */,
+				0A3F5C3D2D09D01A00CD26C0 /* GameResult.swift in Sources */,
 				0A3F5C332D07FB6700CD26C0 /* Rule.swift in Sources */,
 				0A24247C2D0600F9000BB949 /* ContentView.swift in Sources */,
 				0A24247A2D0600F9000BB949 /* Mahjong_seiseki_senderApp.swift in Sources */,
@@ -596,6 +616,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0A3F5C362D09CDF400CD26C0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+		0A3F5C392D09CEB000CD26C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON?tab=readme-ov-file#integration";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0A3F5C372D09CDF500CD26C0 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A3F5C362D09CDF400CD26C0 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		0A3F5C3A2D09CEB000CD26C0 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A3F5C392D09CEB000CD26C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0A24246E2D0600F9000BB949 /* Project object */;
 }
