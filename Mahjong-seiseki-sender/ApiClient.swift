@@ -8,6 +8,9 @@
 import Foundation
 import Alamofire
 
+// TODO: 失敗に備えてローカルに送信履歴
+// TODO: デバッグしたいからログ吐く画面欲しい
+// TODO: GASの管理が難しいのでAPIバージョン管理したい
 // FIXME: APIが増える場合もう少し構造化する
 // https://qiita.com/yimajo/items/dd0daae1b264570c152d
 class ApiClient {
@@ -20,7 +23,7 @@ class ApiClient {
     }
 
     func saveResults(gameResult: GameResult) {
-        let url = "https://script.google.com/macros/s/AKfycbw0jkaQt4R_EedgzzJTlfu3NeEop6X14IpWLdXKJZRYWhB9ZAff6vVG1GNhuOtmPBj5YA/exec"
+        let url = "https://script.google.com/macros/s/AKfycbyRXnQvRbece1glMCLM_w_MCpTeMr5m4EU2gmd6c5A2ZwP9xnKA7e9RcRtHpXYJdxNghg/exec"
 
         let request = session.request(
             url,
