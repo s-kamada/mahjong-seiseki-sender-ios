@@ -57,6 +57,7 @@ struct ContentView: View {
             }
 
             // TODO: ボタンを押したらレスポンスに合わせてOK/NGなUIを出す (コンタクト登録時に出るアレみたいな)
+            // TODO: validate
             Button(action: {
                 ApiClient.shared.saveResults(
                     gameResult: GameResult(

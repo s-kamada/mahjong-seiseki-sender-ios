@@ -20,7 +20,7 @@ class ApiClient {
     }
 
     func saveResults(gameResult: GameResult) {
-        let url = "https://script.google.com/macros/s/AKfycbwmHGK0hgF3t_2FwZXQIBwSCfPSv0uBpOKEYsZ7Qzi9Hr3QXxImE0Tn3KnFW6Hd3d_L8w/exec"
+        let url = "https://script.google.com/macros/s/AKfycbw0jkaQt4R_EedgzzJTlfu3NeEop6X14IpWLdXKJZRYWhB9ZAff6vVG1GNhuOtmPBj5YA/exec"
 
         let request = session.request(
             url,
