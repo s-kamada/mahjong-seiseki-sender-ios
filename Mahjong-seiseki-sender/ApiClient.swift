@@ -22,7 +22,7 @@ class ApiClient {
         session = Session(configuration: .default, redirectHandler: APIRedirectHandler())
     }
 
-    func saveResults(gameResult: GameResult) {
+    func saveResults(gameResult: GameResult, completion: @escaping (Result<GeneralResponse, AFError>) -> ()) {
         let url = "https://script.google.com/macros/s/AKfycbyRXnQvRbece1glMCLM_w_MCpTeMr5m4EU2gmd6c5A2ZwP9xnKA7e9RcRtHpXYJdxNghg/exec"
 
         let request = session.request(
@@ -44,6 +44,8 @@ class ApiClient {
                 print("response: \(response.data)")
                 print("failure: \(error)")
             }
+
+            completion(response.result)
         }
     }
 }

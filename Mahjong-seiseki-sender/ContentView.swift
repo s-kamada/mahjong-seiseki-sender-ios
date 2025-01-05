@@ -15,6 +15,8 @@ struct ContentView: View {
     @State var point: Int = 0
     @State var rule = Rule.M_REAGUE
 
+    @State var isSending = false
+
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -58,18 +60,27 @@ struct ContentView: View {
 
             // TODO: ボタンを押したらレスポンスに合わせてOK/NGなUIを出す (コンタクト登録時に出るアレみたいな)
             // TODO: validate
-            Button(action: {
-                ApiClient.shared.saveResults(
-                    gameResult: GameResult(
-                        description: description,
-                        point: point,
-                        rank: rank.rawValue,
-                        rule: rule
-                    )
-                )
-            }, label: {
-                Text("Send")
-            })
+            HStack {
+                Button(action: {
+                    isSending = true
+                    ApiClient.shared.saveResults(
+                        gameResult: GameResult(
+                            description: description,
+                            point: point,
+                            rank: rank.rawValue,
+                            rule: rule
+                        )
+                    ) { _ in
+                        isSending = false
+                    }
+                }, label: {
+                    Text("Send")
+                })
+
+                if (isSending) {
+                    ProgressView().progressViewStyle(.circular)
+                }
+            }
         }
         .padding()
     }
