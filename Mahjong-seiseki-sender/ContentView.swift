@@ -10,7 +10,7 @@ import SwiftUI
 // TODO: 送信ボタンでAPIを叩ける様にする
 
 struct ContentView: View {
-    @State var description = "ベルバードリーグ"
+    @State var description = "テスト"
     @State var rank = Rank.first
     @State var point: Int = 0
     @State var rule = Rule.M_REAGUE

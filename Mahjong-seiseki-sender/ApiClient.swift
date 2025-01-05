@@ -28,11 +28,11 @@ class ApiClient {
         let request = session.request(
             url,
             method: .post,
-            parameters: gameResult.toDoictionary(),
+            parameters: gameResult.toDictionary(),
             encoding: JSONEncoding.default,
             headers: nil
         )
-        print("parameters: \(gameResult.toDoictionary())")
+        print("parameters: \(gameResult.toDictionary())")
 
         request.responseDecodable(of: GeneralResponse.self) { response in
             switch response.result {

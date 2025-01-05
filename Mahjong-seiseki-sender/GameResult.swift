@@ -13,7 +13,7 @@ struct GameResult: APIParameterConvertible {
     var rank: Int
     var rule: Rule
 
-    func toDoictionary() -> [String : Any] {
+    func toDictionary() -> [String : Any] {
         return [
             "description": description,
             "point": point,
@@ -24,5 +24,5 @@ struct GameResult: APIParameterConvertible {
 }
 
 protocol APIParameterConvertible {
-    func toDoictionary() -> [String: Any]
+    func toDictionary() -> [String: Any]
 }
