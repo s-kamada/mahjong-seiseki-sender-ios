@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1CB90F2D3F4989003C4791 /* PlayGroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1CB90E2D3F4989003C4791 /* PlayGroundView.swift */; };
 		0A24247A2D0600F9000BB949 /* Mahjong_seiseki_senderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2424792D0600F9000BB949 /* Mahjong_seiseki_senderApp.swift */; };
 		0A24247C2D0600F9000BB949 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24247B2D0600F9000BB949 /* ContentView.swift */; };
 		0A24247E2D0600FB000BB949 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A24247D2D0600FB000BB949 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A1CB90E2D3F4989003C4791 /* PlayGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayGroundView.swift; sourceTree = "<group>"; };
 		0A2424762D0600F9000BB949 /* Mahjong-seiseki-sender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mahjong-seiseki-sender.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A2424792D0600F9000BB949 /* Mahjong_seiseki_senderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mahjong_seiseki_senderApp.swift; sourceTree = "<group>"; };
 		0A24247B2D0600F9000BB949 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				0A24247F2D0600FB000BB949 /* Preview Content */,
 				0A3F5C342D093E6300CD26C0 /* ApiClient.swift */,
 				0A3F5C3C2D09D01A00CD26C0 /* GameResult.swift */,
+				0A1CB90E2D3F4989003C4791 /* PlayGroundView.swift */,
 			);
 			path = "Mahjong-seiseki-sender";
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				0A3F5C312D07FB6100CD26C0 /* Rank.swift in Sources */,
 				0A3F5C352D093E6300CD26C0 /* ApiClient.swift in Sources */,
 				0A3F5C3D2D09D01A00CD26C0 /* GameResult.swift in Sources */,
+				0A1CB90F2D3F4989003C4791 /* PlayGroundView.swift in Sources */,
 				0A3F5C332D07FB6700CD26C0 /* Rule.swift in Sources */,
 				0A24247C2D0600F9000BB949 /* ContentView.swift in Sources */,
 				0A24247A2D0600F9000BB949 /* Mahjong_seiseki_senderApp.swift in Sources */,
