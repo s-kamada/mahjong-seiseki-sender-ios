@@ -12,18 +12,18 @@ import SwiftUI
 struct ContentView: View {
     @State var description = "テスト"
     @State var rank = Rank.first
-    @State var point: Int = 0
+    @State var point: Float = 0.0
     @State var rule = Rule.M_REAGUE
+    @State var results: [GameResult] = [
+        GameResult(timeStamp: Date(), description: "1戦目", point: 33.4, rank: Rank.first, rule: Rule.KYOKAI),
+        GameResult(timeStamp: Date(), description: "2戦目", point: 33.4, rank: Rank.second, rule: Rule.SAIKOUISEN),
+        GameResult(timeStamp: Date(), description: "3戦目", point: -33.4, rank: Rank.first, rule: Rule.RENMEI)
+    ]
 
     @State var isSending = false
 
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-
             HStack {
                 Text("description")
                 Text("*").foregroundColor(.red)
@@ -65,9 +65,10 @@ struct ContentView: View {
                     isSending = true
                     ApiClient.shared.saveResults(
                         gameResult: GameResult(
+                            timeStamp: Date(),
                             description: description,
                             point: point,
-                            rank: rank.rawValue,
+                            rank: rank,
                             rule: rule
                         )
                     ) { _ in
@@ -81,6 +82,23 @@ struct ContentView: View {
                     ProgressView().progressViewStyle(.circular)
                 }
             }
+            
+            List {
+                ForEach(results) { result in
+                    HStack {
+                        Text(result.timeStamp.format())
+                        Text(result.rule.rawValue)
+                        Spacer()
+                        Text(result.rank.toString())
+                        Text("\(result.point)")
+                    }
+                }
+            }
+            .listStyle(.plain)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color(red: 200/255, green: 200/255, blue: 200/255), lineWidth: 2)
+            )
         }
         .padding()
     }
@@ -88,4 +106,13 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+extension Date {
+    
+    func format() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy/MM/dd HH:mm"
+        return formatter.string(from: self)
+    }
 }

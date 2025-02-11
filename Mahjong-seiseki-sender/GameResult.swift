@@ -7,17 +7,20 @@
 
 import Foundation
 
-struct GameResult: APIParameterConvertible {
+struct GameResult: APIParameterConvertible, Identifiable {
+    var id: String { "\(timeStamp) \(description)" }
+    
+    var timeStamp: Date
     var description: String
-    var point: Int
-    var rank: Int
+    var point: Float
+    var rank: Rank
     var rule: Rule
 
     func toDictionary() -> [String : Any] {
         return [
             "description": description,
             "point": point,
-            "rank": rank,
+            "rank": rank.rawValue,
             "rule": rule.rawValue
         ]
     }
