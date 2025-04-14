@@ -32,24 +32,40 @@ struct ContentView: View {
             pointInput
             rankInput
             ruleInput
-            sendButton
+            HStack {
+                Spacer()
+                sendButton
+                Spacer()
+                resetButton
+            }
         }
     }
     
     // ログを表示するセクション
     private var resultListSection: some View {
-        List {
-            ForEach(results, id: \.timeStamp) { result in
-                HStack {
-                    Text(result.timeStamp.format())
-                    Text(result.rule.shortHanded)
-                    Spacer()
-                    Text(result.rank.toString())
-                    Text(result.point.value > 0 ? "+" + String(format: "%.1f", round(result.point.value * 10) / 10) : String(format: "%.1f", round(result.point.value * 10) / 10))
+        VStack {
+            List {
+                ForEach(results, id: \.timeStamp) { result in
+                    HStack {
+                        Text(result.timeStamp.format())
+                        Text(result.rule.shortHanded)
+                        Spacer()
+                        Text(result.rank.toString())
+                        Text(result.point.value > 0 ? "+" + String(format: "%.1f", round(result.point.value * 10) / 10) : String(format: "%.1f", round(result.point.value * 10) / 10))
+                    }
                 }
             }
+            .listStyle(.plain)
+            
+            // 合計ポイントと平均順位を表示するView
+            HStack {
+                Spacer()
+                Text("平均順位: \(String(format: "%.2f", results.map { Double($0.rank.rawValue) }.reduce(0, +) / Double(results.count)))")
+                Text("合計: \(results.map { $0.point.value }.reduce(0, +).signedString)")
+            }
+            .padding()
+            .background(Color(red: 240/255, green: 240/255, blue: 240/255))
         }
-        .listStyle(.plain)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color(red: 200/255, green: 200/255, blue: 200/255), lineWidth: 2)
@@ -137,17 +153,33 @@ struct ContentView: View {
             }
         }
     }
+    
+    private var resetButton: some View {
+        Button(action: {}, label: {
+            Text("Reset")
+                .foregroundColor(.red)
+        })
+    }
 }
 
 #Preview {
     ContentView()
 }
 
+// TODO: 切り出す
 extension Date {
-    
     func format() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yy/MM/dd HH:mm"
         return formatter.string(from: self)
+    }
+}
+
+extension Float {
+    var signedString: String {
+        let formatter = NumberFormatter()
+        formatter.positivePrefix = "+"
+        formatter.negativePrefix = "▲"
+        return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
     }
 }
