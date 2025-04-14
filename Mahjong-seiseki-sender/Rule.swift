@@ -5,11 +5,31 @@
 //  Created by Shunsuke Kamada on 2024/12/10.
 //
 
+import Foundation
+
 /**
  * 記録するゲームのルール。
  */
 enum Rule: String, CaseIterable, Identifiable {
     var id: String { rawValue }
+
+    var shortHanded: String {
+        switch self {
+        case .M_REAGUE: return "Mルール"
+        case .SAIKOUISEN: return "最高位ﾙｰﾙ"
+        case .SAIKOUISEN_CLASSIC: return "最高位ｸﾗｼｯｸ"
+        case .RENMEI: return "連盟ﾙｰﾙ"
+        case .WRC: return "WRCﾙｰﾙ"
+        case .WRC_R: return "WRC-Rﾙｰﾙ"
+        case .KYOKAI: return "協会ﾙｰﾙ"
+        case .RMU_A: return "RMU-Aﾙｰﾙ"
+        case .RMU_B: return "RMU-Bﾙｰﾙ"
+        case .RMU_M: return "RMU-Mﾙｰﾙ"
+        case .MU: return "MUﾙｰﾙ"
+        case .MU_CUP: return "MU杯ﾙｰﾙ"
+        case .MU_TOUR: return "MUツアーﾙｰﾙ"
+        }
+    }
 
     // Mリーグ
     /** 赤あり、10-30、オカあり */
@@ -54,4 +74,3 @@ enum Rule: String, CaseIterable, Identifiable {
     /** 赤なし、テンパイ料なし、本場なし、4-12 */
     case MU_TOUR = "ツアーランキングルール"
 }
-
