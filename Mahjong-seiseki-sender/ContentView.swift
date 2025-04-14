@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var results: [GameResult] = []
 
     @State var isSending = false
+    @State private var showingResetAlert = false
 
     var body: some View {
         VStack {
@@ -154,11 +155,24 @@ struct ContentView: View {
         }
     }
     
+    // リセットボタン
     private var resetButton: some View {
-        Button(action: {}, label: {
+        Button(action: {
+            showingResetAlert = true
+        }, label: {
             Text("Reset")
                 .foregroundColor(.red)
         })
+        .alert("確認", isPresented: $showingResetAlert) {
+            Button("キャンセル", role: .cancel) {
+                // do nothing
+            }
+            Button("削除", role: .destructive) {
+                results.removeAll()
+            }
+        } message: {
+            Text("全てのデータを削除しますか？\n削除しても送信した先のデータが消えることはありません。")
+        }
     }
 }
 
