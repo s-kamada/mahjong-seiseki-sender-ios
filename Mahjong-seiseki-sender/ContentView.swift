@@ -14,7 +14,7 @@ struct ContentView: View {
     @State var rule = Rule.M_REAGUE
     @State var results: [GameResult] = []
 
-    @State var isSending = false
+    @State var sendState: SendBadgeState = .none
     @State private var showingResetAlert = false
 
     var body: some View {
@@ -123,12 +123,11 @@ struct ContentView: View {
         }
     }
     
-    /// 送信ボタン
+    /// 送信ボタン。送信中はぐるぐるが表示されたり、送信済みになったら成功失敗のアイコンが表示されたりする
     // TODO: 送信時の処理をUsecase的なところに移植する
     private var sendButton: some View {
         HStack {
             Button(action: {
-                isSending = true
                 let addingResult = GameResult(
                     timeStamp: Date(),
                     description: description,
@@ -136,11 +135,25 @@ struct ContentView: View {
                     rank: rank,
                     rule: rule
                 )
+                
+                // ぐるぐるを表示する
+                sendState = .sending
                 ApiClient.shared.saveResults(
                     gameResult: addingResult
-                ) { _ in
-                    // ぐるぐるを引っ込める
-                    isSending = false
+                ) { result in
+                    // ぐるぐるを引っ込めて成功 or 失敗アイコンを一定時間表示する
+                    switch result {
+                    case .success(_):
+                        sendState = .send
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            sendState = .none
+                        }
+                    case .failure(_):
+                        sendState = .failed
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            sendState = .none
+                        }
+                    }
                     // 履歴viewに追加する
                     // TODO: 切り出す
                     results.append(addingResult)
@@ -149,8 +162,17 @@ struct ContentView: View {
                 Text("Send")
             })
 
-            if (isSending) {
+            switch sendState {
+            case .sending:
                 ProgressView().progressViewStyle(.circular)
+            case .send:
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(.green)
+            case .failed:
+                Image(systemName: "xmark.circle.fill")
+                    .foregroundColor(.red)
+            case .none:
+                EmptyView()
             }
         }
     }
@@ -196,4 +218,16 @@ extension Float {
         formatter.negativePrefix = "▲"
         return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
     }
+}
+
+/// 送信ボタン横に表示するアイコンのState
+enum SendBadgeState {
+    /// 何も表示しない
+    case none
+    /// 送信中のぐるぐる
+    case sending
+    /// 送信成功
+    case send
+    /// 送信失敗
+    case failed
 }
