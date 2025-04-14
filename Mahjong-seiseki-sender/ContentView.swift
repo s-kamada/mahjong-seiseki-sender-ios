@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// TODO: 送信ボタンでAPIを叩ける様にする
-
 struct ContentView: View {
     @State var description = "テスト"
     @State var rank = Rank.first
