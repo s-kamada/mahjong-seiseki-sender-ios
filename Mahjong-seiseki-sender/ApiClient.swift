@@ -23,6 +23,7 @@ class ApiClient {
     }
 
     func saveResults(gameResult: GameResult, completion: @escaping (Result<GeneralResponse, AFError>) -> ()) {
+        // TODO: 置き場を変える
         let url = "https://script.google.com/macros/s/AKfycbyRXnQvRbece1glMCLM_w_MCpTeMr5m4EU2gmd6c5A2ZwP9xnKA7e9RcRtHpXYJdxNghg/exec"
 
         let request = session.request(
