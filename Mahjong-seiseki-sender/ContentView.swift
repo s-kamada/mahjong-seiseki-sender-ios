@@ -14,11 +14,7 @@ struct ContentView: View {
     @State var rank = Rank.first
     @State var point: Float = 0.0
     @State var rule = Rule.M_REAGUE
-    @State var results: [GameResult] = [
-        GameResult(timeStamp: Date(), description: "1戦目", point: Point(value: 33.4), rank: Rank.first, rule: Rule.KYOKAI),
-        GameResult(timeStamp: Date(), description: "2戦目", point: Point(value: 33.4), rank: Rank.second, rule: Rule.SAIKOUISEN),
-        GameResult(timeStamp: Date(), description: "3戦目", point: Point(value: -33.4), rank: Rank.third, rule: Rule.RENMEI)
-    ]
+    @State var results: [GameResult] = []
 
     @State var isSending = false
 
@@ -30,7 +26,8 @@ struct ContentView: View {
         .padding()
     }
     
-    /// 入力欄
+    // TODO: 各セクション毎くらいに別ファイルに切り出す
+    /// 入力セクション
     private var inputSection: some View {
         VStack {
             descriptionInput
@@ -39,6 +36,26 @@ struct ContentView: View {
             ruleInput
             sendButton
         }
+    }
+    
+    // ログを表示するセクション
+    private var resultListSection: some View {
+        List {
+            ForEach(results, id: \.timeStamp) { result in
+                HStack {
+                    Text(result.timeStamp.format())
+                    Text(result.rule.shortHanded)
+                    Spacer()
+                    Text(result.rank.toString())
+                    Text(result.point.value > 0 ? "+" + String(format: "%.1f", round(result.point.value * 10) / 10) : String(format: "%.1f", round(result.point.value * 10) / 10))
+                }
+            }
+        }
+        .listStyle(.plain)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color(red: 200/255, green: 200/255, blue: 200/255), lineWidth: 2)
+        )
     }
     
     /// 説明欄
@@ -97,16 +114,21 @@ struct ContentView: View {
         HStack {
             Button(action: {
                 isSending = true
+                let addingResult = GameResult(
+                    timeStamp: Date(),
+                    description: description,
+                    point: Point(value: point),
+                    rank: rank,
+                    rule: rule
+                )
                 ApiClient.shared.saveResults(
-                    gameResult: GameResult(
-                        timeStamp: Date(),
-                        description: description,
-                        point: Point(value: point),
-                        rank: rank,
-                        rule: rule
-                    )
+                    gameResult: addingResult
                 ) { _ in
+                    // ぐるぐるを引っ込める
                     isSending = false
+                    // 履歴viewに追加する
+                    // TODO: 切り出す
+                    results.append(addingResult)
                 }
             }, label: {
                 Text("Send")
@@ -116,25 +138,6 @@ struct ContentView: View {
                 ProgressView().progressViewStyle(.circular)
             }
         }
-    }
-    
-    private var resultListSection: some View {
-        List {
-            ForEach(results, id: \.timeStamp) { result in
-                HStack {
-                    Text(result.timeStamp.format())
-                    Text(result.rule.shortHanded)
-                    Spacer()
-                    Text(result.rank.toString())
-                    Text(result.point.value > 0 ? "+" + String(format: "%.1f", round(result.point.value * 10) / 10) : String(format: "%.1f", round(result.point.value * 10) / 10))
-                }
-            }
-        }
-        .listStyle(.plain)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color(red: 200/255, green: 200/255, blue: 200/255), lineWidth: 2)
-        )
     }
 }
 
