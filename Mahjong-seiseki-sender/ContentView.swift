@@ -59,13 +59,14 @@ struct ContentView: View {
             .listStyle(.plain)
             
             // 合計ポイントと平均順位を表示するView
+            // TODO: 切り出す
             HStack {
                 Spacer()
                 Text("平均順位: \(String(format: "%.2f", results.map { Double($0.rank.rawValue) }.reduce(0, +) / Double(results.count)))")
                 Text("合計: \(results.map { $0.point.value }.reduce(0, +).signedString)")
             }
             .padding()
-            .background(Color(red: 240/255, green: 240/255, blue: 240/255))
+            .background(Color(uiColor: .secondarySystemBackground))
         }
         .overlay(
             RoundedRectangle(cornerRadius: 10)
